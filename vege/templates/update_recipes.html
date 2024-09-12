@@ -1,0 +1,28 @@
+{% extends 'base.html' %}    
+{% block start  %}
+<div class="container mt-5 p-3" style="background-color: rgb(238, 177, 177);" >
+
+    <form class="col-4 mx-auto card mt-3 p-3 shadow-lg" method="post" enctype="multipart/form-data" style="background-color: beige;">
+        {% csrf_token %}
+        <h2>Update Recipe</h2>
+        <hr>
+        <div class="mb-auto">
+          <label for="exampleInputEmail1" class="form-label">Recipe name</label>
+          <input name="recipe_name" value="{{recipes.recipe_name}}" required type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+          <textarea class="form-control" name="recipe_description">{{recipes.recipe_description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
+            <input name="recipe_image" type="file" class="form-control">
+          </div>
+
+        <button type="submit" class="btn btn-success">Update Recipe</button>
+      </form>
+ 
+      
+
+</div>
+{% endblock %}

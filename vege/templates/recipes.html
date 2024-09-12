@@ -1,0 +1,82 @@
+{% extends 'base.html' %}    
+{% block start  %}
+
+<!-- {{request.user}}
+{{request.user.first_name}} -->
+
+<div class="container mt-5 p-3" style="background-color: rgb(238, 177, 177);">
+<!--   -->
+    <form class="col-4 mx-auto card mt-3 p-3 shadow-lg" method="post" enctype="multipart/form-data" style="background-color: beige;">
+        {% csrf_token %}
+        <h2>Add Recipe</h2>
+        <hr>
+        <div class="mb-auto">
+          <label for="exampleInputEmail1" class="form-label">Recipe name</label>
+          <input name="recipe_name" required type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+          <textarea class="form-control" required name="recipe_description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
+            <input name="recipe_image" type="file" class="form-control">
+          </div>
+
+        <button type="submit" class="btn btn-success">Add Recipe</button>
+      </form>
+      
+      <!-- <div class="mt-4 mx-auto col-3" >
+        <nav class="navbar navbar-light bg-light col-6 " style="text-align: center;">
+          <form class="mb-3">
+              <input class="form-control" type="search" placeholder="Search Recipe here" aria-label="Search">
+              <button class="btn btn-success " type="submit">Search</button>
+          </form>
+      </nav>
+
+      </div> -->
+
+  <div class="mx-auto col-4">
+    <form>
+      <div class=" mb-3">
+        <hr>
+        <label for="exampleInputEmail1" class="form-label mt-3">Search Food</label>
+          <input name="search" type="text" class="form-control">
+
+      </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+  </div>
+
+
+      <!-- {{recipes}} -->
+      <table class="table mx-auto mt-5 " style="border: black; border-radius: 3%;">
+          <tr style="border: black;">
+            <th scope="col">Sr No.</th> 
+            <th scope="col ">Recipe Name</th>
+            <th scope="col">Recipe Description</th>
+            <th scope="col">Recipe Image</th>
+            <th scope="col">Actions</th>
+          </tr>
+
+          {% for recipe in recipes %}
+          <tr style="border: black;">
+            <td scope="col">{{forloop.counter}}</td>
+            <td scope="col">{{recipe.recipe_name}}</td>
+            <td scope="col">{{recipe.recipe_description}}</td>
+            <td scope="col">
+              <img src="/media/{{recipe.recipe_image}}" style="height: 200px;">
+            </td>
+            <td>
+              <a href="/delete-recipe/{{recipe.id}}" class="btn btn-danger shadow-lg mt-auto mb-auto">Delete</a>
+              <a href="/update-recipe/{{recipe.id}}" class="btn btn-success spacing mt-1 mb-auto">Update</a>
+              
+            </td>
+          </tr>
+          {% endfor %}
+        
+      </table>
+
+</div>
+{% endblock %}
