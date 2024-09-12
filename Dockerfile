@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y python3-venv python3-distutils
 
 # Create a virtual environment
 RUN python3 -m venv venv
-s
+
 # Activate the virtual environment and install dependencies
 COPY requirements.txt requirements.txt
 RUN . venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
