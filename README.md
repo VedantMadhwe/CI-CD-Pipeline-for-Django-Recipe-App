@@ -1,4 +1,6 @@
-CI/CD Pipeline for Django Recipe App
+
+## CI/CD Pipeline for Django Recipe App
+
 This repository contains a CI/CD pipeline implementation using Jenkins for a Django project named recipe-app. The project features a robust set of CRUD (Create, Read, Update, Delete) operations for managing recipes.
 
 Overview
