@@ -25,3 +25,4 @@ EXPOSE 8082
 
 # Start the Django development server inside the virtual environment
 CMD ["/bin/bash", "-c", ". venv/bin/activate && python manage.py runserver 0.0.0.0:8082"]
+
